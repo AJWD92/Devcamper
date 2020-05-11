@@ -4,14 +4,15 @@
 	"description": "Devcamper backend API",
 	"main": "server.js",
 	"scripts": {
-    "start": "SET NODE_ENV=production& node server.js",
-    "dev": "nodemon server"
+		"start": "SET NODE_ENV=production& node server.js",
+		"dev": "nodemon server"
 	},
 	"author": "Aaron Doran",
 	"license": "MIT",
 	"dependencies": {
 		"dotenv": "^8.2.0",
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"morgan": "^1.10.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.3"
