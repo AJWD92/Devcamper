@@ -1,7 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const User = require('../models/User');
-const { use } = require('../routes/auth');
+
 
 // @desc     Register user
 // @route    POST /api/v1/auth/register
@@ -59,7 +59,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     };
 
     if (process.env.NODE_ENV === 'production') {
-        options.secure = true;
+        options.secure = true
     }
 
     res
@@ -70,3 +70,15 @@ const sendTokenResponse = (user, statusCode, res) => {
             token
         });
 };
+
+// @desc     Get current logged in user
+// @route    POST /api/v1/auth/me
+// @access   Private
+exports.getMe = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});
